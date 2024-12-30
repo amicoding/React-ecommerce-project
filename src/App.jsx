@@ -9,6 +9,10 @@ import Shop from './Pages/Shop.jsx'
 import Contact from './Pages/Contact.jsx'
 import Products from './Pages/Products.jsx'
 import About from './Pages/About.jsx'
+import Cart from './Pages/Cart.jsx'
+import Checkout from './Pages/Checkout.jsx'
+import Error from './Pages/Error.jsx'
+import ProductDetails from './Pages/ProductDetails.jsx'
 import RootLayout from './components/RootLayout.jsx'
 
 
@@ -23,6 +27,10 @@ function App() {
       <Route path="/shop" element={<Shop />} />
       <Route path="/product" element={<Products/>} />
       <Route path="/about" element={<About />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/*" element={<Error />} />
+      <Route path="/product-details" element={<ProductDetails/>} />
     </Route>
     
     

@@ -1,19 +1,22 @@
 import React from 'react'
 
-const Shop = () => {
+const Error = () => {
   return (
-  <section>
-    <div className="bg-green-400">
+    
+    <section>
+      
+      <div className="">
         
       <div className="container mx-auto">
-          <div className="text-4xl">
-          SHOP PAGE 
+        <div className="text-4xl">
+          ERROR PAGE 
         </div>
       </div>
     </div>
+      
       
     </section>
   )
 }
 
-export default Shop
+export default Error

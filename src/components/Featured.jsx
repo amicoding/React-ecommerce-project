@@ -6,28 +6,40 @@ import {apiData} from "./ContextApi.jsx"
 import { IoCartOutline } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { FaSearchPlus } from "react-icons/fa";
+import Slider from "react-slick";
 
 
 
 const Featured = () => {
+  
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  };
   
   const data = useContext(apiData)
    
  
   return (
     <section>
-      <div className="mt-6">
+      <div className="mt-6 mb-8 ">
         <div className="container mx-auto">
           
           <div className="">
-            <h2 className="font-bold font-josef text-[46px] text-[#1A0B5B] text-center"> Featured Products </h2>
+            <h2 className="font-bold font-josef text-[46px] text-[#1A0B5B] text-center mb-10"> Featured Products </h2>
               </div>
               
-          <div className="flex flex-wrap justify-between ">
-            
+          <div className=" ">
+       
+          <Slider {...settings}>  
             {data.map((items)=>(
             
-        <div className="shadow-lg w-[23%] mb-5 relative hover:bg-[#2F1AC4] duration-700 group max-w-[270px] max-h-[361px]">
+        <div className="shadow-lg !w-[95%] mb-5 relative hover:bg-[#2F1AC4] duration-700 group max-w-[270px] max-h-[361px]">
                
               <div className="bg-[#F6F7FB] flex justify-center pt-16 pb-8">
           
@@ -62,7 +74,7 @@ const Featured = () => {
             </div>
             
             ))}
-           
+         </Slider>
           
           </div>
           
