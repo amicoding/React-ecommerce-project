@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      
+      fontFamily: {
+         'josef': ["Josefin Sans", "sans-serif"],
+      'lato': ["Lato", "sans-serif"]
+      },
+      
+      colors: {
+        'primary': "#FB2E86"
+      }
+     
+      
+    },
   },
   plugins: [],
 }
