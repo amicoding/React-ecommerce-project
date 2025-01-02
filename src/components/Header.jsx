@@ -6,6 +6,8 @@ import { FaRegUser } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   return (
     
@@ -47,7 +49,13 @@ const Header = () => {
             </li>
             <li className="flex items-center gap-2">Login<FaRegUser/></li>
             <li className="flex items-center gap-2">Wishlist<CiHeart/></li>
-            <li className="flex items-center gap-2"><CiShoppingCart className="text-4xl"  /></li>
+            <li className="flex items-center gap-2">
+            
+            
+            <Link to='/cart'><CiShoppingCart className="text-4xl"  /></Link>
+            
+            
+            </li>
           </ul>
           
         </div>
