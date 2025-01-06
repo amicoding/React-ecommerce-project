@@ -21,15 +21,15 @@ const Navbar = () => {
  
  
   return (
-    <nav className="py-5 z-50">
-      <div className="container mx-auto">
+    <nav className="py-5 z-50 ">
+      <div className="container mx-auto ">
         
         <div className="flex items-center gap-5 justify-between">
           <Link to='/'><img src={Logo}  alt="Hekto Logo" /></Link>
           <div className="">
          <ul
   className={`lg:static lg:flex lg:gap-12 duration-700 ${
-    menuShow ? ' absolute top-14 left-0 pl-10 pt-10 pb-10 pr-4 rounded z-40 bg-[#DFE6F8]'
+    menuShow ? ' absolute top-14 left-0 pl-10 pt-10 pb-10 pr-4 rounded z-40 bg-[#DFE6F8] '
           :
     'absolute top-14 z-40 -left-72'
   }`}
@@ -54,7 +54,7 @@ const Navbar = () => {
             
             <div className="flex items-center">
           <input className="border-2 outline-none w-50 h-8 pl-2 rounded" type="text" />
-          <button className="h-8 w-8 bg-[#FB2E86] flex justify-center items-center text-2xl font-bold" type="submit"><CiSearch className="text-white"/></button>
+          <button className="h-8 w-8 bg-[#FB2E86] flex justify-center items-center text-2xl font-bold " type="submit"><CiSearch className="text-white"/></button>
         </div>
           </ul>
         </div>

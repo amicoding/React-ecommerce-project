@@ -17,7 +17,8 @@ const Featured = () => {
     infinite: true,
     speed: 500,
     autoplay: true,
-    autoplaySpeed: 2000,
+    
+    autoplaySpeed: 1700,
     slidesToShow: 3,
     slidesToScroll: 3
   };
