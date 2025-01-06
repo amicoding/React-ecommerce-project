@@ -1,8 +1,27 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 import Sofa from "../assets/sofa.png"
 import Bell from "../assets/bell.png"
+import Sponsor1 from "../assets/sponsor1.png"
+import Sponsor2 from "../assets/sponsor2.png"
+
+
 const Hero = () => {
+  
+  const settings = {
+   dots: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    
+    autoplaySpeed: 1700,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+  
+  
+  
   return (
     <section className="bg-[#F2F0FF] py-28 z-30 relative ">
       <img className="absolute top-0 left-0 w-60 -z-10" src={Bell} alt="" />
@@ -19,9 +38,25 @@ const Hero = () => {
              <button className="bg-primary text-white font-josef font-semibold px-10 py-4 ml-44" type="submit"><Link  to='/shop'>Shop Now</Link></button>
           </div>
           
-          <div>
-            <img src={Sofa} alt="" />
+          <div className="w-[400px] ">
+            
+            <Slider {...settings}>
+        <div>
+         
+            <img src={Sofa} alt="img" />
         </div>
+        <div>
+         
+            <img src={Sponsor1} alt="img" />
+        </div>
+        <div>
+          
+            <img src={Sponsor2} alt="img" />
+        </div>
+      </Slider>
+           
+        </div>
+        
        
       </div>
       </div>
