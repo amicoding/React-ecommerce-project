@@ -12,7 +12,7 @@ const ContextApi = ({ children }) => {
   // Fetch data with axios
   useEffect(() => {
     axios
-      .get('https://dummyjson.com/products')
+      .get('https://dummyjson.com/products?limit=0')
       .then((res) => setApiInfo(res.data.products))
       .catch((err) => console.error('Error fetching data:', err));
   }, []);
