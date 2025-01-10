@@ -1,28 +1,13 @@
 import React from 'react'
 import demoImg from '../assets/demo.png'
+import ReUseHero from '../components/ReUseHero.jsx'
 
 const Cart = () => {
   return (
     
     <section>
       
-      <div className="bg-[#F2F0FF] h-[286px] flex items-center">
-        
-      <div className="container mx-auto">
-        <div className="">
-          
-          <h1 className="font-josef text-4xl font-bold">Shopping Cart </h1>
-          <ul className="flex gap-2 ">
-            <li>Home</li>
-            <li>Pages</li>
-            <li className="text-primary">Shopping Cart</li>
-          </ul>
-          
-        </div>
-        
-        
-      </div>
-    </div>
+      <ReUseHero heading= 'Shoping Cart'/>
     
     <div className="container mx-auto">
      
@@ -57,9 +42,10 @@ const Cart = () => {
           <h1>$32.00</h1>
         </div>
         <div className="flex">
-          <button className="bg-red-400 text-white  font-bold h-6 w-4" type="submit">-</button>
-           <h1 className="w-[51px] h-6 text-center bg-[#BEBFC2]">1</h1>
-           <button className="bg-red-400 text-white  font-bold h-6 w-4" type="submit">+</button>
+          <button className="bg-[#BEBFC2] flex items-center justify-center text-3xl text-white
+          font-bold h-6 w-5" type="submit">-</button>
+           <h1 className="w-[51px] h-6 text-center bg-[#f0e9e9] ">1</h1>
+           <button className="bg-[#BEBFC2] flex items-center justify-center text-white  font-bold h-6 w-5" type="submit">+</button>
            
         </div>
         <div className="">

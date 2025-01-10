@@ -62,8 +62,8 @@ const Featured = () => {
     autoplaySpeed: 1700,
     slidesToShow: 3,
     slidesToScroll: 3,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
+    nextArrow: <FaArrowAltCircleRight/>,
+    prevArrow: <FaArrowAltCircleLeft />,
     arrows: true, // Make sure arrows are enabled
   };
 
@@ -94,6 +94,8 @@ const Featured = () => {
                       <FaSearchPlus className="text-[#2F1AC4] text-lg" />
                     </div>
                   </div>
+                  
+                  
                   <img className="max-w-[150px]" src={item.thumbnail} alt={item.title} />
                   <button
                     className="absolute top-[58%] py-1 px-2 font-josef bg-[#08D15F] text-white hidden group-hover:block duration-1000"
