@@ -4,6 +4,8 @@ import { apiData } from "../components/ContextApi.jsx";
 import ReUseHero from '../components/ReUseHero.jsx';
 import { IoGrid, IoCartOutline } from "react-icons/io5";
 import { FaList, FaSearchPlus, FaAngleDown } from "react-icons/fa";
+import { CiHeart } from 'react-icons/ci';
+
 
 const Shop = () => {
   const data = useContext(apiData);
@@ -168,11 +170,33 @@ const Shop = () => {
                   className="shadow-lg !w-[95%] mb-5 relative hover:bg-[#2F1AC4] duration-700 group max-w-[270px] max-h-[361px]"
                 >
                   <div className="bg-[#F6F7FB] flex justify-center pt-16 pb-8">
+                    
+               <div className="flex gap-2 absolute left-3 top-6 opacity-0 group-hover:opacity-100 duration-500 ease-in-out cursor-pointer">
+                    <div className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
+                      <IoCartOutline className="text-[#2F1AC4] text-lg" />
+                    </div>
+                    <div className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
+                      <CiHeart className="text-[#2F1AC4] text-lg" />
+                    </div>
+                    <div className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
+                      <FaSearchPlus className="text-[#2F1AC4] text-lg" />
+                    </div>
+                  </div> 
+                
+                    
+                    
                     <img
                       className="max-w-[150px]"
                       src={item.thumbnail}
                       alt={item.title}
                     />
+                    
+            <button
+                    className="absolute top-[58%] py-1 px-2 font-josef bg-[#08D15F] text-white hidden group-hover:block duration-1000"
+                    type="button"
+                  >
+                    View Details
+                  </button>        
                   </div>
                   <div className="text-center py-2">
                     <h2 className="font-bold text-[18px] text-[#FB2E86] group-hover:text-white">
