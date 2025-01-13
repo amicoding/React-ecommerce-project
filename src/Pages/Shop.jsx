@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import FooterBannar from '../components/FooterBannar.jsx';
+import {addToCart} from '../components/slices/CartSlice.js';
 import { apiData } from "../components/ContextApi.jsx";
 import ReUseHero from '../components/ReUseHero.jsx';
 import { IoGrid, IoCartOutline } from "react-icons/io5";
@@ -70,6 +72,15 @@ const Shop = () => {
       setCurrentPage(1); // Reset to the first page when per-page value changes
     }
   };
+  
+  
+  const dispatch = useDispatch()
+  
+  const handleAddToCart = (item)=>{
+  
+    dispatch(addToCart({...item, qty:1}))
+  
+  }
 
   return (
     <section>
@@ -172,7 +183,7 @@ const Shop = () => {
                   <div className="bg-[#F6F7FB] flex justify-center pt-16 pb-8">
                     
                <div className="flex gap-2 absolute left-3 top-6 opacity-0 group-hover:opacity-100 duration-500 ease-in-out cursor-pointer">
-                    <div className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
+                    <div onClick={()=>handleAddToCart(item)} className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
                       <IoCartOutline className="text-[#2F1AC4] text-lg" />
                     </div>
                     <div className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
