@@ -1,12 +1,32 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom';
+import {deleteItem, increment, decrement } from '../components/slices/CartSlice.js'
 import ReUseHero from '../components/ReUseHero.jsx'
+import { MdDeleteForever } from "react-icons/md";
 
 const Cart = () => {
 
 
  let data = useSelector((state)=>state.cartItemManager.cartItems)
  
+ const dispatch = useDispatch()
+ 
+ const handleDelete = (index)=>{
+  
+  dispatch(deleteItem(index))
+ 
+ }
+ const handleIncrement = (index)=>{
+  
+  dispatch(increment(index))
+ 
+ }
+ const handleDecrement = (index)=>{
+  
+  dispatch(decrement(index))
+ 
+ }
  
 
 
@@ -18,7 +38,10 @@ const Cart = () => {
     
     <div className="container mx-auto">
      
-     <div className="flex">
+     {
+       data.length>0? 
+       
+       <div className="flex">
        
        <div className="">
          
@@ -28,8 +51,8 @@ const Cart = () => {
      
      
     {
-      data.map((item)=>(
-        <div className=" mt-8 grid grid-cols-4 gap-8  font-josef">
+      data.map((item, index)=>(
+        <div key={item.id} className=" mt-8 grid grid-cols-4 gap-8  font-josef">
             
             <div className="">
               <h1 className="">Product</h1>
@@ -47,6 +70,7 @@ const Cart = () => {
            <div className="flex gap-2">
             
             <div className="">
+              <MdDeleteForever onClick={()=>handleDelete(index)} className="text-red-800 text-5xl" />
                 <img className="" src={item.thumbnail} alt="" />
               </div>
               <div className="">
@@ -60,10 +84,10 @@ const Cart = () => {
           <h1>${item.price}</h1>
         </div>
         <div className="flex">
-          <button className="bg-[#BEBFC2] flex items-center justify-center text-3xl text-white
+          <button onClick={()=>handleDecrement(index)} className="bg-[#BEBFC2] flex items-center justify-center text-3xl text-white
           font-bold h-6 w-5" type="submit">-</button>
            <h1 className="w-[51px] h-6 text-center bg-[#f0e9e9] ">{item.qty}</h1>
-           <button className="bg-[#BEBFC2] flex items-center justify-center text-white  font-bold h-6 w-5" type="submit">+</button>
+           <button onClick={()=>handleIncrement(index)} className="bg-[#BEBFC2] flex items-center justify-center text-white  font-bold h-6 w-5" type="submit">+</button>
            
         </div>
         <div className="">
@@ -112,6 +136,19 @@ const Cart = () => {
        </div>
         
      </div>
+       
+       :
+       
+       <div className="flex gap-4 justify-center items-center pt-10 font-josef">
+         <h2 className="text-7xl pb-9">Cart is Empty</h2>
+         <div className="pb-10">
+           <Link className="text-4xl bg-blue-500 text-white p-3 pb-3" to='/shop'>Go to Shop</Link>
+         </div>
+         <div className="pb-10">
+           <Link className="text-4xl bg-blue-500 text-white p-3 pb-3" to='/'>Go to Home</Link>
+         </div>
+       </div>
+     }
            
         </div>
        

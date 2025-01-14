@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { CiMail } from "react-icons/ci";
 import { IoIosCall } from "react-icons/io";
 import { FaAngleDown } from "react-icons/fa6";
@@ -9,6 +10,13 @@ import { CiShoppingCart } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+
+    let cartData = useSelector((state)=>state.cartItemManager.cartItems)
+    
+    
+    
+    
+    
   return (
     
     <header className="bg-[#7E33E0] text-white py-3 font-josef ">
@@ -19,7 +27,7 @@ const Header = () => {
         <div className="flex items-center gap-2">
         <div className="flex items-center gap-2">
           <CiMail/>
-          <p>mhhasanul@gmail.com</p>
+          <p>demo@gmail.com</p>
         </div>
         <div className="flex items-center gap-2">
           <IoIosCall/>
@@ -50,10 +58,16 @@ const Header = () => {
             <li className="flex items-center gap-2">Login<FaRegUser/></li>
             <li className="flex items-center gap-2">Wishlist<CiHeart/></li>
             <li className="flex items-center gap-2">
-            
-            
-            <Link to='/cart'><CiShoppingCart className="text-4xl"  /></Link>
-            
+           <Link to='/cart'>
+            <div className="relative">
+              
+              <div className="absolute bg-pink-500 rounded-full w-6 h-6 left-6 -top-1">
+                <h1 className="flex justify-center items-center">{cartData.length}</h1>
+              </div>
+                <Link to='/cart'><CiShoppingCart className="text-4xl"  /></Link>
+            </div>
+          
+            </Link>
             
             </li>
           </ul>
