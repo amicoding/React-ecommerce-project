@@ -7,6 +7,8 @@ import ReUseHero from '../components/ReUseHero.jsx';
 import { IoGrid, IoCartOutline } from "react-icons/io5";
 import { FaList, FaSearchPlus, FaAngleDown } from "react-icons/fa";
 import { CiHeart } from 'react-icons/ci';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Shop = () => {
@@ -79,6 +81,18 @@ const Shop = () => {
   const handleAddToCart = (item)=>{
   
     dispatch(addToCart({...item, qty:1}))
+    
+ toast.success('Added To Cart Successfully', {
+position: "top-center",
+autoClose: 1000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",
+transition: Bounce,
+});
   
   }
 
@@ -185,7 +199,11 @@ const Shop = () => {
                <div className="flex gap-2 absolute left-3 top-6 opacity-0 group-hover:opacity-100 duration-500 ease-in-out cursor-pointer">
                     <div onClick={()=>handleAddToCart(item)} className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
                       <IoCartOutline className="text-[#2F1AC4] text-lg" />
+                      
+              
                     </div>
+ 
+                    
                     <div className="w-10 h-10 hover:bg-white rounded-full flex items-center justify-center">
                       <CiHeart className="text-[#2F1AC4] text-lg" />
                     </div>
@@ -260,6 +278,20 @@ const Shop = () => {
               Next
             </button>
           </div>
+        
+         <ToastContainer
+position="top-center"
+autoClose={1000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+transition={Bounce}
+/>
         </div>
       </div>
       <FooterBannar />

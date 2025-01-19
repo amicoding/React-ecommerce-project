@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
-import {deleteItem, increment, decrement } from '../components/slices/CartSlice.js'
+import {deleteItem, increment, decrement, clearCart } from '../components/slices/CartSlice.js'
 import ReUseHero from '../components/ReUseHero.jsx'
 import { MdDeleteForever } from "react-icons/md";
 
@@ -28,6 +28,11 @@ const Cart = () => {
  
  }
  
+ const deleteAllCartItem = ()=>{
+  
+  dispatch(clearCart())
+ 
+ }
 
 
   return (
@@ -110,7 +115,7 @@ const Cart = () => {
               <button className="bg-[#FB2E86] text-white font-josef text-2xl p-2 rounded mt-10 mb-10" type="submit">Update Cart</button>
             </div>
             <div className="">
-              <button className="bg-[#FB2E86] text-white font-josef text-2xl p-2 rounded mt-10 mb-10 mr-40" type="submit">Clear Cart</button>
+              <button onClick={deleteAllCartItem} className="bg-[#FB2E86] text-white font-josef text-2xl p-2 rounded mt-10 mb-10 mr-40" type="submit">Clear Cart</button>
             </div>
           </div>
          
