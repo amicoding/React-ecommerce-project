@@ -33,6 +33,16 @@ const Cart = () => {
   dispatch(clearCart())
  
  }
+ 
+ 
+ let subtotal = 0;
+ for(let i=0; i<data.length; i++){
+  
+   let item = data[i];
+   subtotal += (item.price*item.qty);
+  
+   
+ }
 
 
   return (
@@ -96,7 +106,7 @@ const Cart = () => {
            
         </div>
         <div className="">
-          <h1>$100.00</h1>
+          <h1>{(item.price*item.qty).toFixed(2)}</h1>
         </div>
          
              
@@ -124,19 +134,19 @@ const Cart = () => {
          <h1 className="font-josef text-3xl mb-10 font-bold text-[#1D3178] flex items-center justify-center">Cart Totals</h1>
          <div className="bg-[#F4F4FC] w-[371px] h-[284px] relative">
            <div className=" flex justify-between border-b-4">
-             <h3 className="text-2xl p-4">Subtotals</h3>    <h3 className="text-2xl p-4">$32</h3>
+             <h3 className="text-2xl p-4">Subtotals:</h3>    <h3 className="text-2xl p-4">${subtotal.toFixed(2)}</h3>
            </div>
            <div className=" flex justify-between border-b-4">
-             <h3 className="text-2xl p-4">Totals</h3>    <h3 className="text-2xl p-4">$32</h3>
+             <h3 className="text-2xl p-4">Totals</h3>    <h3 className="text-2xl p-4">${(subtotal+100).toFixed(2)}</h3>
            </div>
            <div className="flex gap-4 p-4">
              <input type="checkbox" name="" id="" value="" />
            <h5 className="text-[#8A91AB]">Shipping & taxes calculated at checkout</h5>
            </div>
            
-           <button className=" bg-[#19D16F] text-white font-josef p-2 absolute left-24
+         <Link to="/checkout">  <button className=" bg-[#19D16F] text-white font-josef p-2 absolute left-24
            bottom-8
-           " type="submit">Proceed To Checkout</button>
+           " type="submit">Proceed To Checkout</button></Link>
          </div>
        </div>
         
