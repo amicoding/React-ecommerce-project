@@ -9,6 +9,7 @@ import { FaList, FaSearchPlus, FaAngleDown } from "react-icons/fa";
 import { CiHeart } from 'react-icons/ci';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 
 const Shop = () => {
@@ -213,19 +214,21 @@ transition: Bounce,
                   </div> 
                 
                     
-                    
-                    <img
-                      className="max-w-[150px]"
-                      src={item.thumbnail}
-                      alt={item.title}
-                    />
-                    
-            <button
-                    className="absolute top-[58%] py-1 px-2 font-josef bg-[#08D15F] text-white hidden group-hover:block duration-1000"
-                    type="button"
-                  >
-                    View Details
-                  </button>        
+               <div className="relative group">
+  <Link to={`/shop/${item.title.replaceAll(' ','-') }`} className="block">
+    <img
+      className="max-w-[150px]"
+      src={item.thumbnail}
+      alt={item.title}
+    />
+    <button
+      className="absolute top-[58%] left-1/2 transform -translate-x-1/2 py-1 px-2 font-josef bg-[#08D15F] text-white hidden group-hover:block duration-1000 transition ease-in-out px-12 py-2"
+      type="button"
+    >
+      View Details
+    </button>
+  </Link>
+</div>   
                   </div>
                   <div className="text-center py-2">
                     <h2 className="font-bold text-[18px] text-[#FB2E86] group-hover:text-white">

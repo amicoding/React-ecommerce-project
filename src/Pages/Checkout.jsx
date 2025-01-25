@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import ReUseHero from '../components/ReUseHero.jsx'
-import demoPic from '../assets/demo.png'
+
 
 const Checkout = () => {
   
