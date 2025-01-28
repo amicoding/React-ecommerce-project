@@ -11,7 +11,6 @@ import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
-
 const Shop = () => {
   const data = useContext(apiData);
 
