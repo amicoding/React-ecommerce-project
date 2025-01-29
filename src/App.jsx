@@ -10,6 +10,8 @@ import Contact from './Pages/Contact.jsx'
 import Products from './Pages/Products.jsx'
 import About from './Pages/About.jsx'
 import Cart from './Pages/Cart.jsx'
+import Login from './Pages/Login.jsx'
+import Register from './Pages/Register.jsx'
 import Checkout from './Pages/Checkout.jsx'
 import Error from './Pages/Error.jsx'
 import ProductDetails from './Pages/ProductDetails.jsx'
@@ -31,6 +33,9 @@ function App() {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/*" element={<Error />} />
       <Route path="/shop/:title" element={<ProductDetails/>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      
     </Route>
     
     
