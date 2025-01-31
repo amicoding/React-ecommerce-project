@@ -23,7 +23,7 @@ const Hero = () => {
   
   
   return (
-    <section className="bg-[#F2F0FF] py-28 z-30 relative ">
+    <section className="bg-[#F2F0FF] py-28 z-30 relative sm:w-full">
       <img className="absolute top-0 left-0 w-60 -z-10" src={Bell} alt="" />
       <div className="container mx-auto">
         
@@ -38,7 +38,7 @@ const Hero = () => {
              <button className="bg-primary text-white font-josef font-semibold px-10 py-4 ml-44" type="submit"><Link  to='/shop'>Shop Now</Link></button>
           </div>
           
-          <div className="w-[400px] ">
+          <div className="w-[400px]  ">
             
             <Slider {...settings}>
         <div>

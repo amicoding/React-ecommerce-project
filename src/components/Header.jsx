@@ -19,7 +19,7 @@ const Header = () => {
     
   return (
     
-    <header className="bg-[#7E33E0] text-white py-3 font-josef ">
+    <header className="bg-[#7E33E0] text-white py-3 font-josef sm:w-full ">
       
       <div className="mx-auto container">
         
