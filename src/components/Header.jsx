@@ -55,7 +55,10 @@ const Header = () => {
                 <option className="bg-[#7E33E0]">SAR<FaAngleDown/></option>
               </select>
             </li>
-            <li className="flex items-center gap-2">Login<FaRegUser/></li>
+            <Link to='/login'>
+               <li className="flex items-center gap-2">Login<FaRegUser/></li>
+            </Link>
+           
             <li className="flex items-center gap-2">Wishlist<CiHeart/></li>
             <li className="flex items-center gap-2">
            <Link to='/cart'>

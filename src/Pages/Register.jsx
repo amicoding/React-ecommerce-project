@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import ReUseHero from "../components/ReUseHero.jsx";
-import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword , sendEmailVerification} from "firebase/auth";
 
 const Register = () => {
   const auth = getAuth();
+   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -40,12 +41,20 @@ const Register = () => {
     // Create user
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        setSuccessMessage("New User Created Successfully!");
+        
+        const auth = getAuth();
+sendEmailVerification(auth.currentUser)
+  .then(() => {
+    setSuccessMessage("You will get an Email soon!");
+     navigate('/login')
+  });
+  
+        
         setEmail("");
         setPassword("");
       })
       .catch((error) => {
-        setEmailError(error.message);
+        setEmailError('Email Already in use. Please Use Another Email!');
       });
   };
 
@@ -62,7 +71,7 @@ const Register = () => {
               </h2>
 
               {successMessage && (
-                <p className="text-green-500 text-center">{successMessage}</p>
+                <p className="text-white bg-green-400 font-bold text-center">{successMessage}</p>
               )}
 
               <form onSubmit={handleSubmit}>
