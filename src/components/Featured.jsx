@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { apiData } from './ContextApi.jsx';
+import { Link } from "react-router-dom";
 import Slider from 'react-slick';
 import { IoCartOutline } from 'react-icons/io5';
 import { CiHeart } from 'react-icons/ci';
@@ -89,11 +90,14 @@ const Featured = () => {
                     </div>
                   </div>
                   <img className="max-w-[150px]" src={item.thumbnail} alt={item.title} />
+                  <Link to={`/shop/${item.title.replaceAll(' ', '-')}`}>
+                    
                   <button
-                    className="absolute top-[58%] py-1 px-2 font-bold bg-[#08D15F] text-white hidden group-hover:block transition duration-700"
+                    className="absolute top-[58%] left-16 py-1 px-2 font-bold bg-[#08D15F] text-white hidden group-hover:block transition duration-700"
                   >
                     View Details
                   </button>
+                  </Link>
                 </div>
 
                 {/* Product Info */}
