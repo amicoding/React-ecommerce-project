@@ -102,7 +102,7 @@ const Navbar = () => {
                         key={item.id}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
-                        <Link to={`/product/${item.id}`} className="flex items-center gap-3">
+                    <Link to={`/shop/${item.title.replaceAll(' ', '-')}`}>
                           {/* Image on the left side of the title */}
                           <img
                             src={item.thumbnail || "default-image.png"} // Replace with actual image URL
