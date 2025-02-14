@@ -1,90 +1,113 @@
 import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
 import ReUseHero from "../components/ReUseHero.jsx";
 import { CiStar } from "react-icons/ci";
 import { useParams } from "react-router-dom";
 import { apiData } from "../components/ContextApi.jsx";
+import { toast, ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { addToCart } from '../components/slices/CartSlice.js';
 
 const ProductDetails = () => {
-  // Context to fetch API data
   const data = useContext(apiData);
-  
-  // Extract product details from URL parameters
-  const product = useParams();
-  const singleProductTitle = product?.title?.replaceAll("-", " ") || "";
-
-  // Find the specific product based on the title
+  const { title } = useParams();
+  const singleProductTitle = title?.replaceAll("-", " ") || "";
   const singleProduct = data?.find((item) => item.title === singleProductTitle);
 
-  // Handle loading state
-  if (!data) {
-    return <p>Loading data...</p>;
-  }
+  if (!data) return <p className="text-center text-lg">Loading data...</p>;
+  if (!singleProduct) return <p className="text-center text-lg">Product not found.</p>;
 
-  // Handle case when product is not found
-  if (!singleProduct) {
-    return <p>Product not found.</p>;
-  }
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    dispatch(addToCart({ ...item, qty: 1 }));
+    toast.success("Added To Cart Successfully", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
 
   return (
     <section>
       {/* Hero Section */}
-      <ReUseHero heading="ProductDetails Page" />
-      <div className="pt-20 pb-20">
+      <ReUseHero heading="Product Details Page" />
+      <div className="py-10 px-4">
         <div className="container mx-auto">
-          {/* Product Details */}
-          <div className="flex gap-10 font-bold font-josef">
-            {/* Left: Product Images */}
-            <div className="flex">
-              {/* Product Images */}
-              {singleProduct.images?.map((img, index) => (
-                <div key={index}>
-                  <img className="p-2 w-20" src={img} alt={`Product ${index + 1}`} />
-                </div>
-              ))}
-              {/* Main Thumbnail */}
-              <div>
-                <img className="p-2 w-[375px]" src={singleProduct.thumbnail} alt="Product Thumbnail" />
+          {/* Responsive Product Layout */}
+          <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
+            {/* Product Images */}
+            <div className="flex flex-col md:flex-row gap-4">
+              {/* Thumbnail */}
+              <div className="flex justify-center">
+                <img
+                  className="w-full max-w-[375px] rounded-lg"
+                  src={singleProduct.thumbnail}
+                  alt="Product Thumbnail"
+                />
+              </div>
+              {/* Extra Images */}
+              <div className="flex flex-wrap gap-2 justify-center md:flex-col">
+                {singleProduct.images?.map((img, index) => (
+                  <img
+                    key={index}
+                    className="w-20 h-20 object-cover rounded-md"
+                    src={img}
+                    alt={`Product ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
-            {/* Right: Product Information */}
-            <div className="pt-8">
+            {/* Product Info */}
+            <div className="w-full md:w-1/2 space-y-4">
               {/* Product Title */}
-              <h1 className="text-4xl pt-2">{singleProduct.title}</h1>
+              <h1 className="text-3xl font-semibold">{singleProduct.title}</h1>
 
-              {/* Product Rating */}
-              <div className="flex gap-4 pt-2">
-                <div className="flex gap-2">
+              {/* Rating */}
+              <div className="flex gap-2 items-center">
+                <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <CiStar key={i} className="text-2xl bg-[#F9C016]" />
+                    <CiStar key={i} className="text-2xl text-yellow-500" />
                   ))}
                 </div>
-                <div>(22)</div>
+                <span className="text-gray-500">(22 Reviews)</span>
               </div>
 
-              {/* Product Price */}
-              <div className="flex gap-5 pt-2">
-                <div>${singleProduct.price}</div>
-                <div>
-                  <del>${(singleProduct.price + 0.1).toFixed(2)}</del>
-                </div>
+              {/* Price */}
+              <div className="flex items-center gap-3 text-lg font-medium">
+                <span className="text-green-600">${singleProduct.price}</span>
+                <del className="text-gray-500">${(singleProduct.price + 0.1).toFixed(2)}</del>
               </div>
 
-              {/* Product Color */}
-              <h2 className="pt-2">Colour</h2>
+              {/* Description */}
+              <p className="text-gray-700 leading-relaxed">{singleProduct.description}</p>
 
-              {/* Product Description */}
-              <h4 className="pt-2 w-[549px]">{singleProduct.description}</h4>
-
-              {/* Other Details */}
-              <h3 className="pt-2">Add To Cart</h3>
-              <h3 className="pt-2">Category: {singleProduct.category}</h3>
-              <h3 className="pt-2">Share</h3>
-              <h3 className="pt-2">Tags</h3>
+              {/* Additional Details */}
+              <div className="space-y-2">
+                <h3 className="font-medium">
+                  Category: <span className="text-gray-600">{singleProduct.category}</span>
+                </h3>
+                <button
+                  onClick={() => handleAddToCart(singleProduct)}
+                  className="mt-2 bg-green-500 text-white py-2 px-4 rounded-md transition-all hover:bg-green-600"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Toast Notification */}
+      <ToastContainer />
     </section>
   );
 };
