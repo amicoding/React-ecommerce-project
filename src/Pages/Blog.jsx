@@ -6,7 +6,7 @@ const Blog = () => {
         
       <div className="container mx-auto">
         <div className="text-4xl">
-          BLOG PAGE 
+          <h2 className='bg-green-200'>Blog Page </h2>
         </div>
       </div>
     </div>
